@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Recipe implements Serializable{
-	ArrayList <ingredient> ingredient = new ArrayList <ingredient>;
+	ArrayList<ingredient> ingredients = new ArrayList<>();
 	String name;
 	String instructions;
 	
@@ -26,11 +26,11 @@ public class Recipe implements Serializable{
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
-	public ArrayList<ingredient> getIngredient() {
-		return ingredient;
+	public ArrayList<ingredient> getIngredients() {
+		return ingredients;
 	}
-	public void setIngredient(ArrayList<ingredient> ingredient) {
-		this.ingredient = ingredient;
+	public void setIngredients(ArrayList<ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 	@Override
 	public String toString() {
