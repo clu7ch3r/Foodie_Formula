@@ -2,17 +2,18 @@ package models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import models.Ingredient;
 
 public class Recipe implements Serializable{
-	ArrayList<ingredient> ingredients = new ArrayList<>();
-	String name;
-	String instructions;
+	private ArrayList<Ingredient> ingredients = new ArrayList<>();
+	private String name;
+	private String instructions;
 	
 	
-	public Recipe(String name, String instructions, ArrayList<models.ingredient> ingredient) {
+	public Recipe(String name, String instructions, ArrayList<models.Ingredient> ingredient) {
 		this.name = name;
 		this.instructions = instructions;
-		this.ingredient = ingredient;
+		this.ingredients = ingredient;
 	}
 	public String getName() {
 		return name;
@@ -26,10 +27,10 @@ public class Recipe implements Serializable{
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
-	public ArrayList<ingredient> getIngredients() {
+	public ArrayList<Ingredient> getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(ArrayList<ingredient> ingredients) {
+	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 	@Override
