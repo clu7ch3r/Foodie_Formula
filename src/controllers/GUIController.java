@@ -55,7 +55,6 @@ public class GUIController implements Initializable{
 	public void initialize(URL url, ResourceBundle rb) {
 		unitComboBox.getItems().addAll("Cup(s)", "Tsp", "tsp");
 		//add more units here to the ComboBox as we need them
-		
 	}
 
 }
