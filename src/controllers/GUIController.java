@@ -53,7 +53,7 @@ public class GUIController implements Initializable{
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		unitComboBox.getItems().addAll("Cup(s)", "Tsp", "tsp");
+		unitComboBox.getItems().addAll("Cup(s)", "Tsp", "tsp", "Quart","mL","fl. oz.");
 		//add more units here to the ComboBox as we need them
 	}
 
