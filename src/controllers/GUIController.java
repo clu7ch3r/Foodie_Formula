@@ -35,6 +35,7 @@ public class GUIController implements Initializable {
 
 	@FXML
 	private Button ingredientButton;
+	
 
 	@FXML
 	private TableView<String> shoppingListTable;
@@ -61,7 +62,15 @@ public class GUIController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		unitComboBox.getItems().addAll("Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz.");
 		// add more units here to the ComboBox as we need them
-		
+		ingredientButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				String unitType= unitComboBox.getAccessibleText();
+			}
+			
+		});
 		saveRecipeButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
