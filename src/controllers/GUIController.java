@@ -19,7 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class GUIController implements Initializable, EventHandler<ActionEvent> {
+public class GUIController implements Initializable {
 
 	@FXML
 	private TableView<String> recipeTable;
@@ -62,13 +62,17 @@ public class GUIController implements Initializable, EventHandler<ActionEvent> {
 		unitComboBox.getItems().addAll("Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz.");
 		// add more units here to the ComboBox as we need them
 		
+		saveRecipeButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				// This method should save the recipes to 
+			}
+		});
+		
 		convertButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event arg0) {
-				String name = recipeNameField.getText();
-				
 				// This method should convert the recipe into the shopping list.
-				
 			}
 		});
 		
@@ -78,12 +82,10 @@ public class GUIController implements Initializable, EventHandler<ActionEvent> {
 			public void handle(Event event) {
 				String searchString = searchField.getText();
 				//this is the method for search for recipes
-				
 			}
 		});
 		
 	}
-	
 	
 
 }
