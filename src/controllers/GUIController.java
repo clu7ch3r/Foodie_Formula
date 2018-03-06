@@ -3,17 +3,23 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.event.EventHandlerManager;
+
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
-public class GUIController implements Initializable {
+public class GUIController implements Initializable, EventHandler<ActionEvent> {
 
 	@FXML
 	private TableView<String> recipeTable;
@@ -41,6 +47,8 @@ public class GUIController implements Initializable {
 
 	@FXML
 	private Button saveRecipeButton;
+	
+	
 
 	@FXML
 	private Button convertButton;
@@ -55,10 +63,21 @@ public class GUIController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		unitComboBox.getItems().addAll("Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz.");
 		// add more units here to the ComboBox as we need them
-		searchButton.onActionProperty();
+		
+		
+		searchButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				String searchString = searchField.getText();
+				System.out.println(searchString);
+				
+			}
+		});
 		
 	}
 	
+	
+
 }
 
 
