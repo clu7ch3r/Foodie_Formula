@@ -47,8 +47,6 @@ public class GUIController implements Initializable, EventHandler<ActionEvent> {
 
 	@FXML
 	private Button saveRecipeButton;
-	
-	
 
 	@FXML
 	private Button convertButton;
@@ -64,12 +62,22 @@ public class GUIController implements Initializable, EventHandler<ActionEvent> {
 		unitComboBox.getItems().addAll("Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz.");
 		// add more units here to the ComboBox as we need them
 		
+		convertButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+			@Override
+			public void handle(Event arg0) {
+				String name = recipeNameField.getText();
+				
+				// This method should convert the recipe into the shopping list.
+				
+			}
+		});
+		
 		
 		searchButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
 				String searchString = searchField.getText();
-				System.out.println(searchString);
+				//this is the method for search for recipes
 				
 			}
 		});
