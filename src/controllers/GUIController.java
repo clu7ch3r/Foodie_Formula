@@ -81,7 +81,7 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String searchString = searchField.getText();
-				//this is the method for search for recipes
+				// This is the method for search for recipes
 			}
 		});
 		
