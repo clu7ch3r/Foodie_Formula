@@ -24,7 +24,7 @@ public class GUIController implements Initializable {
 	private TableView<Ingredient> recipeTable;
 
 	@FXML
-	private TableColumn<Ingredient, String> amountTabCol;
+	private TableColumn<Ingredient, Double> amountTabCol;
 
 	@FXML
 	private TableColumn<Ingredient, String> unitTabCol;
@@ -39,7 +39,7 @@ public class GUIController implements Initializable {
 	private TextField ingredientTextField;
 
 	@FXML
-	private Spinner<Integer> amountSpinner = new Spinner<Integer>(0, 100, 0);
+	private Spinner<Double> amountSpinner = new Spinner<Double>(0, 100, 0);
 
 	@FXML
 	private Button ingredientButton;
@@ -67,20 +67,23 @@ public class GUIController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
 		unitComboBox.getItems().addAll("Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz.");
 		unitComboBox.setPromptText("-Unit-");
-		
-		amountSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
-		
-		
-		ingredientButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 
+		amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0));
+
+		ingredientButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				String unitType = null;
-				System.out.println(unitType);
+				String unitType = unitComboBox.getValue();
+				Double amount = amountSpinner.getValue();
+				String name = ingredientTextField.getText();
+				
+				Ingredient tmp = new Ingredient(name,amount,unitType);
+				recipeTable.getItems().add(tmp);
+				
 			}
-
 		});
 		saveRecipeButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
