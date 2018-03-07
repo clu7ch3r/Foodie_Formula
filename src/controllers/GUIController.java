@@ -14,15 +14,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import models.Ingredient;
 
 public class GUIController implements Initializable {
 
 	@FXML
-	private TableView<String> recipeTable;
+	private TableView<Ingredient> recipeTable;
+
+	@FXML
+	private TableColumn<Ingredient, String> amountTabCol;
+
+	@FXML
+	private TableColumn<Ingredient, String> unitTabCol;
+
+	@FXML
+	private TableColumn<Ingredient, String> ingredientTabCol;
 
 	@FXML
 	private ComboBox<String> unitComboBox;
@@ -35,7 +46,6 @@ public class GUIController implements Initializable {
 
 	@FXML
 	private Button ingredientButton;
-	
 
 	@FXML
 	private TableView<String> shoppingListTable;
@@ -66,26 +76,25 @@ public class GUIController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
-				String unitType;
+				String unitType = null;
 				System.out.println(unitType);
 			}
-			
+
 		});
 		saveRecipeButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				// This method should save the recipes to 
+				// This method should save the recipes to
 			}
 		});
-		
+
 		convertButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event arg0) {
 				// This method should convert the recipe into the shopping list.
 			}
 		});
-		
-		
+
 		searchButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
@@ -93,54 +102,7 @@ public class GUIController implements Initializable {
 				// This is the method for search for recipes
 			}
 		});
-		
+
 	}
-	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

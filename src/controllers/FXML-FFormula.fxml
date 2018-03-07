@@ -38,16 +38,16 @@
             </Label>
             <TableView fx:id="recipeTable" prefHeight="450.0" prefWidth="300.0">
               <columns>
-                <TableColumn prefWidth="69.60000419616699" text="Unit" />
-                <TableColumn prefWidth="161.19998931884766" text="Ingredient" />
-                  <TableColumn prefWidth="71.20001220703125" text="Amount" />
+                  <TableColumn fx:id="amountTabCol" prefWidth="59.20001029968262" text="Amount" />
+                <TableColumn fx:id="unitTabCol" prefWidth="74.79999542236328" text="Unit" />
+                <TableColumn fx:id="ingredientTabCol" prefWidth="171.20001220703125" text="Ingredient" />
               </columns>
             </TableView>
             <HBox prefHeight="37.0" prefWidth="300.0" spacing="5.0">
                <children>
+                  <Spinner fx:id="amountSpinner" editable="true" prefHeight="25.0" prefWidth="67.0" />
                   <ComboBox fx:id="unitComboBox" prefHeight="25.0" prefWidth="80.0" />
                   <TextField fx:id="ingredientTextField" prefHeight="25.0" prefWidth="165.0" />
-                  <Spinner fx:id="amountSpinner" editable="true" prefHeight="25.0" prefWidth="67.0" />
                </children>
             </HBox>
             <Button fx:id="ingredientButton" mnemonicParsing="false" text="Add Ingredient" />
