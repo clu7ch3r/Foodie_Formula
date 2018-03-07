@@ -1,11 +1,9 @@
 package utilities;
 
 import java.util.HashMap;
-
 import enums.ItemType;
 import enums.VolumeType;
 import enums.WeightType;
-import javafx.scene.input.KeyCode;
 import models.Ingredient;
 
 public class Converter {
@@ -40,14 +38,20 @@ public class Converter {
 
 	public double convertVolumeToWeight(Ingredient ingredient) {
 
-		// ingredient uses method below
+		double totalweight = ingredient.getQuantity() * convertVolumeToWeight(ingredient.getVolumeType(),
+				ingredient.getItemType(), ingredient.getWeightType());
 
-		return 0;
+		return totalweight;
 	}
 
 	public double convertVolumeToWeight(VolumeType vType, ItemType iType, WeightType wType) {
-		// logic
-		return 0;
+
+		double vol = volToCup.get(vType);
+		double item = typeToGrams.get(iType);
+		double weight = weightToGrams.get(wType);
+		double totalweight = vol * item * weight;
+
+		return totalweight;
 
 	}
 }
