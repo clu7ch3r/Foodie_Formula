@@ -66,8 +66,8 @@ public class GUIController implements Initializable {
 
 			@Override
 			public void handle(Event event) {
-				// TODO Auto-generated method stub
-				String unitType= unitComboBox.getAccessibleText();
+				String unitType;
+				System.out.println(unitType);
 			}
 			
 		});
