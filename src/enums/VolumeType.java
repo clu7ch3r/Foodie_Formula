@@ -2,10 +2,10 @@ package enums;
 
 public enum VolumeType {
 
-	QUART,
+	QUART, 
 	CUP,
-	TABLESPOON,
-	TEASPOON,
-	FLUIDOUNCE,
-	MILLILITER
+	TABLESPOON, 
+	TEASPOON, 
+	FLUIDOUNCE, 
+	MILLILITER 
 }

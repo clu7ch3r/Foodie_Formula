@@ -5,42 +5,43 @@ import java.util.HashMap;
 import enums.ItemType;
 import enums.VolumeType;
 import enums.WeightType;
+import javafx.scene.input.KeyCode;
 import models.Ingredient;
 
 public class Converter {
 
-	private static HashMap<VolumeType, Double> volToCup = new HashMap<>();
-	private static HashMap<ItemType, Double> typetoGrams = new HashMap<>();
-	private static HashMap<WeightType, Double> weightToGrams = new HashMap<>();
+	private static HashMap<VolumeType, Double> volToCup = new HashMap<VolumeType, Double>();
+	private static HashMap<ItemType, Double> typeToGrams = new HashMap<ItemType, Double>();
+	private static HashMap<WeightType, Double> weightToGrams = new HashMap<WeightType, Double>();
 
-	// missing contructor
+	static { // called once and hardset variables
 
-	public static HashMap<VolumeType, Double> getVolToCup() {
-		return volToCup;
+		// Populate volToCup
+		volToCup.put(VolumeType.CUP, 1d);
+		volToCup.put(VolumeType.QUART, 4d);
+		volToCup.put(VolumeType.FLUIDOUNCE, 1d / 8);
+		volToCup.put(VolumeType.TABLESPOON, 1d / 16);
+		volToCup.put(VolumeType.TEASPOON, 1d / 48);
+		volToCup.put(VolumeType.MILLILITER, 1d / 236.6);
+
+		// Populate typeToGrams (Cup Based)
+		typeToGrams.put(ItemType.WHOLE, 1d);
+		typeToGrams.put(ItemType.FINEPOWDER, 140d);
+		typeToGrams.put(ItemType.GRAIN, 150d);
+		typeToGrams.put(ItemType.GRANULAR, 190d);
+		typeToGrams.put(ItemType.LIQUIDSOLID, 200d);
+		typeToGrams.put(ItemType.LIQUID, 240d);
+
+		// Populate weightToGrams (Gram Based)
+		weightToGrams.put(WeightType.POUND, 0.002205);
+		weightToGrams.put(WeightType.OUNCE, 0.03527);
+		weightToGrams.put(WeightType.GRAM, 1d);
 	}
 
-	public static void setVolToCup(HashMap<VolumeType, Double> volToCup) {
-		Converter.volToCup = volToCup;
-	}
+	public double convertVolumeToWeight(Ingredient ingredient) {
 
-	public static HashMap<ItemType, Double> getTypetoGrams() {
-		return typetoGrams;
-	}
+		// ingredient uses method below
 
-	public static void setTypetoGrams(HashMap<ItemType, Double> typetoGrams) {
-		Converter.typetoGrams = typetoGrams;
-	}
-
-	public static HashMap<WeightType, Double> getWeightToGrams() {
-		return weightToGrams;
-	}
-
-	public static void setWeightToGrams(HashMap<WeightType, Double> weightToGrams) {
-		Converter.weightToGrams = weightToGrams;
-	}
-
-	public double convertVolumeToWeight(Ingredient ingredients) {
-		// logic
 		return 0;
 	}
 

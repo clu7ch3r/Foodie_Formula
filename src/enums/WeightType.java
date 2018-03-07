@@ -3,6 +3,6 @@ package enums;
 public enum WeightType {
 
 	POUND,
-	ONUCE,
+	OUNCE,
 	GRAM
 }
