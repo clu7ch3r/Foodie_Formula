@@ -18,7 +18,7 @@ public class Main extends Application {
 			
 			stage.setScene(scene);
 			stage.setResizable(false);
-			stage.setTitle("Foodie's Formula");
+			stage.setTitle("Red Rum Inc. Red Rum Inc. Red Rum Inc. Red Rum Inc. Red Rum Inc.");
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
