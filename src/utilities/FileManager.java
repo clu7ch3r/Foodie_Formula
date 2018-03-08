@@ -14,12 +14,12 @@ public class FileManager {
 
 	public static ArrayList<Recipe> recipeBox = new ArrayList<>();
 
-<<<<<<< HEAD
-	public static void saveFile() {
 
-=======
-	public void saveFile() throws ClassNotFoundException {
->>>>>>> d988fc805eff3715ad272d607278f3de853d5d6d
+	
+
+
+	public static void saveFile() throws ClassNotFoundException {
+
 		String saveFile = "Formula.txt";
 		try {
 			FileOutputStream fos = new FileOutputStream(saveFile);
@@ -34,12 +34,10 @@ public class FileManager {
 		}
 	}
 
-<<<<<<< HEAD
+
 	public static void loadFile() {
 
-=======
-	public void loadFile() {
->>>>>>> d988fc805eff3715ad272d607278f3de853d5d6d
+
 		try {
 			FileInputStream fis = new FileInputStream("Formula.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
