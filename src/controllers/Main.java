@@ -21,7 +21,7 @@ public class Main extends Application {
 			stage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
 			stage.setScene(scene);
 			stage.setResizable(false);
-			stage.setTitle("Red Rum Inc. Red Rum Inc. Red Rum Inc. Red Rum Inc. Red Rum Inc.");
+			stage.setTitle("Foodie's Formula");
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
