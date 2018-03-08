@@ -74,7 +74,7 @@ public class GUIController implements Initializable {
 	private TextField recipeNameField;
 
 	@FXML
-	private TextArea recipeInsructionsField;
+	private TextArea recipeInstructionsField;
 
 	@FXML
 	private Button saveRecipeButton;
@@ -138,9 +138,12 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String name = recipeNameField.getText();
-				String instructions = recipeInsructionsField.getText();
+
+				String instructions = recipeInstructionsField.getText();
+
 				@SuppressWarnings("unchecked")
 				ArrayList<Ingredient> ingreds = (ArrayList<Ingredient>) recipeTable.getItems();
+
 
 				if (name.isEmpty() || instructions.isEmpty() || ingreds.isEmpty()) {
 
@@ -149,7 +152,8 @@ public class GUIController implements Initializable {
 					FileManager.recipeBox.add(tmp);
 					recipeTable.getItems().clear();
 					recipeNameField.setText("");
-					recipeInsructionsField.setText("");
+					recipeInstructionsField.setText("");
+
 				}
 			}
 		});

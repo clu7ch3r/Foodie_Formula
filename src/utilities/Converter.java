@@ -40,7 +40,7 @@ public class Converter {
 
 		double totalweight = ingredient.getQuantity() * convertVolumeToWeight(ingredient.getVolumeType(),
 				ingredient.getItemType(), ingredient.getWeightType());
-		
+
 		ingredient.setWeight(totalweight);
 	}
 
