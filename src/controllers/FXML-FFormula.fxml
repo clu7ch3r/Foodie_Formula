@@ -89,7 +89,7 @@
             <Label text="Recipe Name" />
             <TextField fx:id="recipeNameField" />
             <Label text="Recipe Instructions" />
-            <TextArea fx:id="recipeInsructionsField" prefHeight="330.0" prefWidth="300.0" />
+            <TextArea fx:id="recipeInstructionsField" prefHeight="330.0" prefWidth="300.0" />
             <Button fx:id="saveRecipeButton" mnemonicParsing="false" text="Save Recipe" />
             <Separator prefWidth="200.0" />
             <Button fx:id="convertButton" mnemonicParsing="false" text="Convert Recipe to Shopping List" />
