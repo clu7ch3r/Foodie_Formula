@@ -1,7 +1,7 @@
 package enums;
 
 public enum VolumeType {
-
+	WHOLE,
 	QUART, 
 	CUP,
 	TABLESPOON, 
