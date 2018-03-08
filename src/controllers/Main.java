@@ -1,18 +1,14 @@
-package controllers;
-	
-import java.util.ArrayList;
+package controllers;	
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import models.Recipe;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 
 
 public class Main extends Application {
-	
-	ArrayList<Recipe> recipeBox = new ArrayList<>();
 	
 	@Override
 	public void start(Stage stage) {
@@ -22,6 +18,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,1000,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
+			stage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
 			stage.setScene(scene);
 			stage.setResizable(false);
 			stage.setTitle("Red Rum Inc. Red Rum Inc. Red Rum Inc. Red Rum Inc. Red Rum Inc.");

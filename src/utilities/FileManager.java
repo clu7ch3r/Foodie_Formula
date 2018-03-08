@@ -6,45 +6,46 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import models.Recipe;
 
 public class FileManager {
 
-	// try {
+	ArrayList<Recipe> recipeBox = new ArrayList<>();
 
-	public void writeToFile() {
-		String saveFile = "";
-//		Recipe recipe = new Recipe();
+	public void saveFile() {
+
+		String saveFile = "Formula.txt";
+
 		try {
 			FileOutputStream fos = new FileOutputStream(saveFile);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-//			oos.writeObject(Recipe.class);
+			oos.writeObject(recipeBox);
 			oos.close();
 			fos.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new java.lang.Error("File not found");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new java.lang.Error("IOException");
 		}
 	}
 
-	public void saveToFile() {
-		String loadFile = "";
+	public void loadFile() {
+
 		try {
-			FileInputStream fis = new FileInputStream(loadFile);
+			FileInputStream fis = new FileInputStream("Formula.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-//			ois.readObject(Recipe.class);
+			@SuppressWarnings({ "unchecked", "unused" })
+			ArrayList<Recipe> recipeBox = (ArrayList<Recipe>) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new java.lang.Error("File not found.");
+		} catch (ClassNotFoundException e) {
+			throw new java.lang.Error("Class not found.");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new java.lang.Error("IOException.");
 		}
 	}
 }
-
-// } catch (IOException e) {
-// System.out.println("Cmon dude, you just got an IOException .l.");
-// } catch (ClassNotFoundException e) {
-// System.out.println("Class not found");
-// }

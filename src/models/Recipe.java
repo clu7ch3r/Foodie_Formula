@@ -46,13 +46,14 @@ public class Recipe implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Recipe Title: ");
+		builder.append("Recipe: ");
 		builder.append(name);
+		builder.append(", ");
 		builder.append("Ingredients: ");
 		builder.append(ingredients);
-		builder.append(", Cooking Instructions: ");
+		builder.append(", ");
+		builder.append("Cooking Instructions: ");
 		builder.append(instructions);
 		return builder.toString();
 	}
-
 }
