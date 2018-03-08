@@ -3,6 +3,7 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import enums.VolumeType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import models.Ingredient;
 
@@ -27,7 +29,7 @@ public class GUIController implements Initializable {
 	private TableColumn<Ingredient, Double> amountTabCol;
 
 	@FXML
-	private TableColumn<Ingredient, String> unitTabCol;
+	private TableColumn<Ingredient, VolumeType> unitTabCol;
 
 	@FXML
 	private TableColumn<Ingredient, String> ingredientTabCol;
@@ -67,7 +69,14 @@ public class GUIController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
+
+		amountTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, Double>("quantity"));
+		;
+		ingredientTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
+		;
+		unitTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, VolumeType>("volumeType"));
+		;
+
 		unitComboBox.getItems().addAll("Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz.");
 		unitComboBox.setPromptText("-Unit-");
 
@@ -77,12 +86,18 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String unitType = unitComboBox.getValue();
-				Double amount = amountSpinner.getValue();
+				double amount = amountSpinner.getValue();
 				String name = ingredientTextField.getText();
-				
-				Ingredient tmp = new Ingredient(name,amount,unitType);
-				recipeTable.getItems().add(tmp);
-				
+
+				if (name.isEmpty() || amount == 0 || unitType.isEmpty()) {
+
+				} else {
+					Ingredient tmp = new Ingredient(name, amount, unitType);
+					recipeTable.getItems().add(tmp);
+					ingredientTextField.setText("");
+					amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0));
+					unitComboBox.setValue(unitComboBox.getPromptText());
+				}
 			}
 		});
 		saveRecipeButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
