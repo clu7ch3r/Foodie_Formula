@@ -2,6 +2,8 @@ package enums;
 
 public enum ItemType {
 	
+	CHOOSE,
+	
 	FINEPOWDER,
 	GRAIN,
 	LIQUID,
