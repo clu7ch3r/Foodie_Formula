@@ -1,6 +1,7 @@
 package controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import enums.VolumeType;
@@ -100,10 +101,20 @@ public class GUIController implements Initializable {
 				}
 			}
 		});
+		
 		saveRecipeButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				// This method should save the recipes to the recipe box
+				String name = recipeNameField.getText();
+				String Inscruction = recipeInsructionsField.getText();
+				@SuppressWarnings("unchecked")
+				ArrayList<Ingredient> ingred = (ArrayList<Ingredient>) recipeTable.getItems();
+				
+				if(name.isEmpty() || Inscruction.isEmpty() || ingred.isEmpty()) {
+					
+				}else {
+					
+				}
 			}
 		});
 
