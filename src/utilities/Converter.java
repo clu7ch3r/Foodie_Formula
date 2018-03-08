@@ -52,6 +52,5 @@ public class Converter {
 		double totalweight = vol * item * weight;
 
 		return totalweight;
-
 	}
 }

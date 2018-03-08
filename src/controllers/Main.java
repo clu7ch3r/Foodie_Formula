@@ -1,18 +1,13 @@
-package controllers;
-	
-import java.util.ArrayList;
+package controllers;	
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import models.Recipe;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 
 
 public class Main extends Application {
-	
-	ArrayList<Recipe> recipeBox = new ArrayList<>();
 	
 	@Override
 	public void start(Stage stage) {
