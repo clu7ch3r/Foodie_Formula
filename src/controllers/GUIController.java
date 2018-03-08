@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import utilities.FileManager;
 import enums.ItemType;
 import enums.VolumeType;
 import enums.WeightType;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -22,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import models.Ingredient;
+import models.Recipe;
 
 public class GUIController implements Initializable {
 
@@ -54,6 +57,9 @@ public class GUIController implements Initializable {
 
 	@FXML
 	private Button ingredientButton;
+	
+	@FXML
+    private Button clearButton;
 
 	@FXML
 	private TableView<Ingredient> shoppingListTable;
@@ -96,7 +102,15 @@ public class GUIController implements Initializable {
 		unitComboBox.getItems().addAll(VolumeType.values());
 		unitComboBox.setValue(VolumeType.CHOOSE);
 
-		amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0));
+		amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0, 0.25));
+		
+		clearButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+			@Override
+			public void handle(Event arg0) {
+				recipeTable.getItems().clear();
+			}
+		});
+		
 
 		ingredientButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
@@ -113,7 +127,7 @@ public class GUIController implements Initializable {
 					Ingredient tmp = new Ingredient(name, amount, unitType, form);
 					recipeTable.getItems().add(tmp);
 					ingredientTextField.setText("");
-					amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0));
+					amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0, 0.25));
 					unitComboBox.setValue(VolumeType.CHOOSE);
 					formComboBox.setValue(ItemType.CHOOSE);
 				}
@@ -124,14 +138,18 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String name = recipeNameField.getText();
-				String Inscruction = recipeInsructionsField.getText();
+				String instructions = recipeInsructionsField.getText();
 				@SuppressWarnings("unchecked")
-				ArrayList<Ingredient> ingred = (ArrayList<Ingredient>) recipeTable.getItems();
+				ArrayList<Ingredient> ingreds = (ArrayList<Ingredient>) recipeTable.getItems();
 
-				if (name.isEmpty() || Inscruction.isEmpty() || ingred.isEmpty()) {
+				if (name.isEmpty() || instructions.isEmpty() || ingreds.isEmpty()) {
 
 				} else {
-
+					Recipe tmp = new Recipe(name, instructions, ingreds);
+					FileManager.recipeBox.add(tmp);
+					recipeTable.getItems().clear();
+					recipeNameField.setText("");
+					recipeInsructionsField.setText("");
 				}
 			}
 		});

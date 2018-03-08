@@ -52,10 +52,21 @@
                   <ComboBox fx:id="formComboBox" prefHeight="25.0" prefWidth="98.0" />
                </children>
             </HBox>
-            <Button fx:id="ingredientButton" mnemonicParsing="false" text="Add Ingredient">
+            <HBox alignment="TOP_CENTER" spacing="15.0">
                <VBox.margin>
                   <Insets />
-               </VBox.margin></Button>
+               </VBox.margin>
+               <children>
+                  <Button fx:id="ingredientButton" mnemonicParsing="false" text="Add Ingredient" />
+                  <Button fx:id="clearButton" mnemonicParsing="false" text="Clear Ingredients" />
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
          </children>
          <GridPane.margin>
             <Insets left="8.0" />

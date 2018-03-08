@@ -12,9 +12,9 @@ import models.Recipe;
 
 public class FileManager {
 
-	ArrayList<Recipe> recipeBox = new ArrayList<>();
+	public static ArrayList<Recipe> recipeBox = new ArrayList<>();
 
-	public void saveFile() {
+	public static void saveFile() {
 
 		String saveFile = "Formula.txt";
 
@@ -31,7 +31,7 @@ public class FileManager {
 		}
 	}
 
-	public void loadFile() {
+	public static void loadFile() {
 
 		try {
 			FileInputStream fis = new FileInputStream("Formula.txt");
