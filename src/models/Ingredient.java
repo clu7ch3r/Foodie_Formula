@@ -6,14 +6,15 @@ import enums.ItemType;
 import enums.VolumeType;
 import enums.WeightType;
 
-public class Ingredient implements  Serializable{
-	
+public class Ingredient implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private double quantity;
+	private double weight = -1;
 	private VolumeType volumeType;
 	private WeightType weightType;
 	private ItemType itemType;
@@ -67,15 +68,34 @@ public class Ingredient implements  Serializable{
 	}
 
 	public double getWeight() {
-		double b = 0;
-		return b;
+		if (weight == -1) {
+			throw new java.lang.Error(
+					"Weight hasn't been converted yet, try calling convertVolumeToWeight with Ingredients as parameter.");
+		}
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 	@Override
 	public String toString() {
-		return "Ingredient [name=" + name + ", quantity=" + quantity + ", volumeType=" + volumeType + ", weightType="
-				+ weightType + ", itemType=" + itemType + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Name: ");
+		builder.append(name);
+		builder.append(", ");
+		builder.append("Quantity: ");
+		builder.append(quantity);
+		builder.append(", ");
+		builder.append("Volume Type: ");
+		builder.append(volumeType);
+		builder.append(", ");
+		builder.append("Weight Type: ");
+		builder.append(weightType);
+		builder.append(", ");
+		builder.append("Item Type: ");
+		builder.append(itemType);
+		return builder.toString();
 	}
-	
-	
 }

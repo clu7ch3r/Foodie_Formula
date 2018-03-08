@@ -9,15 +9,14 @@ import java.io.ObjectOutputStream;
 
 public class FileManager {
 
-	// try {
-
-	public void writeToFile() {
-		String saveFile = "";
-//		Recipe recipe = new Recipe();
+	public void saveFile() {
+		
+		String saveFile = "Formula.txt";
+		// Recipe recipe = new Recipe();
 		try {
 			FileOutputStream fos = new FileOutputStream(saveFile);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-//			oos.writeObject(Recipe.class);
+			// oos.writeObject(Recipe.class);
 			oos.close();
 			fos.close();
 		} catch (FileNotFoundException e) {
@@ -27,12 +26,12 @@ public class FileManager {
 		}
 	}
 
-	public void saveToFile() {
-		String loadFile = "";
+	public void loadFile() {
+		
 		try {
-			FileInputStream fis = new FileInputStream(loadFile);
+			FileInputStream fis = new FileInputStream("Formula.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-//			ois.readObject(Recipe.class);
+			// ois.readObject(Recipe.class);
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {

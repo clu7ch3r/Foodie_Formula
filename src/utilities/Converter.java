@@ -36,12 +36,12 @@ public class Converter {
 		weightToGrams.put(WeightType.GRAM, 1d);
 	}
 
-	public double convertVolumeToWeight(Ingredient ingredient) {
+	public void convertVolumeToWeight(Ingredient ingredient) {
 
 		double totalweight = ingredient.getQuantity() * convertVolumeToWeight(ingredient.getVolumeType(),
 				ingredient.getItemType(), ingredient.getWeightType());
-
-		return totalweight;
+		
+		ingredient.setWeight(totalweight);
 	}
 
 	public double convertVolumeToWeight(VolumeType vType, ItemType iType, WeightType wType) {
