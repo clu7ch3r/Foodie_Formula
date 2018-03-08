@@ -13,15 +13,6 @@ import models.Recipe;
 public class FileManager {
 
 	ArrayList<Recipe> recipeBox = new ArrayList<>();
-	
-	
-	public void clearIngredients() {
-//		recipeBox.get
-	}
-	
-	public void clearRecipe() {
-		recipeBox.clear();
-	}
 
 	public void saveFile() throws ClassNotFoundException {
 		String saveFile = "Formula.txt";
