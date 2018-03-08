@@ -27,27 +27,11 @@ public class Ingredient implements Serializable {
 		this.itemType = itemType;
 	}
 	
-	public Ingredient(String name, Double quantity, String unitType) {
+	public Ingredient(String name, Double quantity, VolumeType unitType, ItemType form) {
 		setName(name);
 		setQuantity(quantity);
-		//"Whole", "Quart", "Cup(s)", "Tbsp", "tsp", "mL", "fl. oz."
-		if(unitType.equals("Whole")) {
-			volumeType = VolumeType.WHOLE;
-		}else if(unitType.equals("Quart")) {
-			volumeType = VolumeType.QUART;
-		}else if(unitType.equals("Cup(s)")) {
-			volumeType = VolumeType.CUP;
-		}else if(unitType.equals("Tbsp")) {
-			volumeType = VolumeType.TABLESPOON;
-		}else if(unitType.equals("tsp")) {
-			volumeType = VolumeType.TEASPOON;
-		}else if(unitType.equals("mL")) {
-			volumeType = VolumeType.MILLILITER;
-		}else if(unitType.equals("fl. oz.")) {
-			volumeType = VolumeType.FLUIDOUNCE;
-		}else {
-			throw new IllegalArgumentException("Check the Combo Box if this exception was thrown.");
-		}
+		setVolumeType(unitType);
+		setItemType(form);
 	}
 
 	public String getName() {

@@ -39,18 +39,23 @@
             <TableView fx:id="recipeTable" prefHeight="450.0" prefWidth="300.0">
               <columns>
                   <TableColumn fx:id="amountTabCol" prefWidth="59.20001029968262" text="Amount" />
-                <TableColumn fx:id="unitTabCol" prefWidth="74.79999542236328" text="Unit" />
-                <TableColumn fx:id="ingredientTabCol" prefWidth="171.20001220703125" text="Ingredient" />
+                <TableColumn fx:id="unitTabCol" prefWidth="53.199981689453125" text="Unit" />
+                <TableColumn fx:id="ingredientTabCol" prefWidth="101.5999526977539" text="Ingredient" />
+                  <TableColumn fx:id="formTabCol" prefWidth="76.39999389648438" text="Form" />
               </columns>
             </TableView>
             <HBox prefHeight="37.0" prefWidth="300.0" spacing="5.0">
                <children>
-                  <Spinner fx:id="amountSpinner" editable="true" prefHeight="25.0" prefWidth="67.0" />
-                  <ComboBox fx:id="unitComboBox" prefHeight="25.0" prefWidth="80.0" />
-                  <TextField fx:id="ingredientTextField" prefHeight="25.0" prefWidth="165.0" />
+                  <Spinner fx:id="amountSpinner" editable="true" prefHeight="25.0" prefWidth="64.0" />
+                  <ComboBox fx:id="unitComboBox" prefHeight="25.0" prefWidth="70.0" />
+                  <TextField fx:id="ingredientTextField" prefHeight="25.0" prefWidth="94.0" />
+                  <ComboBox fx:id="formComboBox" prefHeight="25.0" prefWidth="98.0" />
                </children>
             </HBox>
-            <Button fx:id="ingredientButton" mnemonicParsing="false" text="Add Ingredient" />
+            <Button fx:id="ingredientButton" mnemonicParsing="false" text="Add Ingredient">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Button>
          </children>
          <GridPane.margin>
             <Insets left="8.0" />
@@ -65,8 +70,8 @@
             </Label>
             <TableView fx:id="shoppingListTable" prefHeight="500.0" prefWidth="299.0">
               <columns>
-                <TableColumn prefWidth="149.20001220703125" text="Ingredient" />
-                <TableColumn prefWidth="149.2000732421875" text="Amount to buy (oz)" />
+                <TableColumn fx:id="shopIngredList" prefWidth="149.20001220703125" text="Ingredient" />
+                <TableColumn fx:id="shopWeightTabCol" prefWidth="147.60009765625" text="Amount to buy (oz)" />
               </columns>
                <padding>
                   <Insets right="8.0" />
@@ -83,7 +88,7 @@
             </Label>
             <Label text="Recipe Name" />
             <TextField fx:id="recipeNameField" />
-            <Label text="Recipe Insructions" />
+            <Label text="Recipe Instructions" />
             <TextArea fx:id="recipeInsructionsField" prefHeight="330.0" prefWidth="300.0" />
             <Button fx:id="saveRecipeButton" mnemonicParsing="false" text="Save Recipe" />
             <Separator prefWidth="200.0" />
