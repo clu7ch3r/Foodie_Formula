@@ -58,6 +58,7 @@ public class Converter {
 	}
 
 	public static ArrayList<Ingredient> convertedIngredients(ArrayList<Ingredient> i) {
+
 		for (int x = 0; x < i.size(); x++) {
 			double w = convertVolumeToWeight(i.get(x));
 			i.get(x).setWeight(w);

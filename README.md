@@ -8,6 +8,6 @@ Ingredient -> Takes in name, quantity, and the 3 types.<br>
 VolumeType -> Enums of volume types.<br>
 ItemType -> Enums of ingredient types.<br>
 WeightType -> Enums of weight types.<br>
-FFormula -> fxml file that uses steam builder.<br>
+FFormula -> Built using SceneBuilder.<br>
 GUIController -> Consist of event handlers that uses and controls the other classes.<br>
 
