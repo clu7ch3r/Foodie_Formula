@@ -4,10 +4,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import utilities.Converter;
 import utilities.FileManager;
 import enums.ItemType;
 import enums.VolumeType;
 import enums.WeightType;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -53,19 +55,22 @@ public class GUIController implements Initializable {
 	private TextField ingredientTextField;
 
 	@FXML
-	private Spinner<Double> amountSpinner = new Spinner<Double>(0, 100, 0);
+	private Spinner<Double> amountSpinner;
 
 	@FXML
 	private Button ingredientButton;
-	
+
 	@FXML
-    private Button clearButton;
+	private Button clearButton;
 
 	@FXML
 	private TableView<Ingredient> shoppingListTable;
 
 	@FXML
-	private TableColumn<Ingredient, String> shopIngredList;
+	private TableColumn<Ingredient, String> shopIngredTabCol;
+
+	@FXML
+	private TableColumn<Ingredient, Double> shopAmountTabCol;
 
 	@FXML
 	private TableColumn<Ingredient, WeightType> shopWeightTabCol;
@@ -90,6 +95,10 @@ public class GUIController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
+		shopIngredTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
+		shopAmountTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, Double>("weight"));
+		shopWeightTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, WeightType>("weightType"));
 
 		amountTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, Double>("quantity"));
 		ingredientTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
@@ -103,14 +112,13 @@ public class GUIController implements Initializable {
 		unitComboBox.setValue(VolumeType.CHOOSE);
 
 		amountSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0, 0.25));
-		
+
 		clearButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event arg0) {
 				recipeTable.getItems().clear();
 			}
 		});
-		
 
 		ingredientButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
@@ -144,7 +152,6 @@ public class GUIController implements Initializable {
 				@SuppressWarnings("unchecked")
 				ArrayList<Ingredient> ingreds = (ArrayList<Ingredient>) recipeTable.getItems();
 
-
 				if (name.isEmpty() || instructions.isEmpty() || ingreds.isEmpty()) {
 
 				} else {
@@ -161,7 +168,15 @@ public class GUIController implements Initializable {
 		convertButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event arg0) {
-				// This method should convert the recipe into the shopping list.
+				
+				ObservableList<Ingredient> tmp = recipeTable.getItems();
+				if (tmp.isEmpty()) {
+
+				} else {
+					ObservableList<Ingredient> tmp2 = Converter.convertedIngredients(tmp);
+					shoppingListTable.getItems().clear();
+					shoppingListTable.getItems().addAll(tmp2);
+				}
 			}
 		});
 
@@ -169,7 +184,17 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String searchString = searchField.getText();
-				// This is the method for search for recipes
+				boolean isSuccues = false;
+				int tmpCount = 0;
+				for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+					Recipe tmp = FileManager.recipeBox.get(i);
+					String tmp2 = tmp.getName();
+					if (tmp2.contains(searchString)) {
+						isSuccues = true;
+						tmpCount++;
+					}
+				}
+
 			}
 		});
 
