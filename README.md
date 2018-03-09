@@ -2,6 +2,7 @@
 
 
 **The search box isn't fully functional at the moment.**
+**There's Whole in both VolumeType and ItemType and it's breaking the conversion.**
 
 Main -> Application runner.<br>
 ItemType -> Enums of ingredient types.<br>
