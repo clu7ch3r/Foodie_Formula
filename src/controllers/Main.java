@@ -15,7 +15,7 @@ public class Main extends Application {
 		try {
 			GridPane root = FXMLLoader.load(getClass().getResource("FXML-FFormula.fxml"));
 			
-			Scene scene = new Scene(root,1000,600);
+			Scene scene = new Scene(root,1000,650);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			stage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
