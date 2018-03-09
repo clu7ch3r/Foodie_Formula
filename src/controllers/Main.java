@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 
 
+@SuppressWarnings("unused")
 public class Main extends Application {
 	
 	@Override

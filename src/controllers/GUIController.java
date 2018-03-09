@@ -3,7 +3,6 @@ package controllers;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import utilities.Converter;
 import utilities.FileManager;
 import enums.ItemType;
@@ -32,6 +31,7 @@ import javafx.stage.Stage;
 import models.Ingredient;
 import models.Recipe;
 
+@SuppressWarnings("unused")
 public class GUIController implements Initializable {
 
 	@FXML
@@ -103,7 +103,6 @@ public class GUIController implements Initializable {
 		shopIngredTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
 		shopAmountTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, Double>("weight"));
 		shopWeightTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, WeightType>("weightType"));
-
 		amountTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, Double>("quantity"));
 		ingredientTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
 		unitTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, VolumeType>("volumeType"));
