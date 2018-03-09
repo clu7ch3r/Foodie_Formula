@@ -18,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -184,6 +183,7 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String searchString = searchField.getText();
+				@SuppressWarnings("unused")
 				Recipe oneAndDone;
 				if (searchString.isEmpty()) {
 					searchField.setText("You can't search unless you enter something.");
