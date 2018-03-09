@@ -32,10 +32,17 @@ public class Ingredient implements Serializable {
 		setQuantity(quantity);
 		setVolumeType(unitType);
 		setItemType(form);
-		// this if allows the ingredient to know what weight to use based upon if it is a solid or a liquid
+		// this if allows the ingredient to know what weight to use based upon if it is
+		// a solid or a liquid
 		if (form.equals(ItemType.LIQUID) || form.equals(ItemType.LIQUIDSOLID)) {
 			setWeightType(WeightType.OUNCE);
-		} else {
+		} else if (unitType.equals(VolumeType.WHOLE) || form.equals(ItemType.WHOLE)) {
+			setWeight(quantity);
+		}
+		// } else if (unitType.equals(VolumeType.WHOLE) && form.equals(ItemType.WHOLE))
+		// {
+		// setWeight(quantity);
+		else {
 			setWeightType(WeightType.GRAM);
 		}
 	}

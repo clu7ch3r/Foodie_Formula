@@ -17,6 +17,7 @@ public class Converter {
 
 		// Populate volToCup
 		volToCup.put(VolumeType.CUP, 1d);
+		volToCup.put(VolumeType.WHOLE, 1d);
 		volToCup.put(VolumeType.QUART, 4d);
 		volToCup.put(VolumeType.FLUIDOUNCE, 1d / 8);
 		volToCup.put(VolumeType.TABLESPOON, 1d / 16);
