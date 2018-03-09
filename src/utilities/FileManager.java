@@ -14,7 +14,7 @@ public class FileManager {
 
 	public static ArrayList<Recipe> recipeBox = new ArrayList<>();
 
-	public static void saveFile() throws ClassNotFoundException {
+	public static void saveFile() {
 
 		String saveFile = "Formula.txt";
 
