@@ -1,5 +1,8 @@
 # Foodie_Formula
 
+
+**The search box isn't fully functional at the moment.**
+
 Main -> Application runner.<br>
 ItemType -> Enums of ingredient types.<br>
 VolumeType -> Enums of volume types.<br>
