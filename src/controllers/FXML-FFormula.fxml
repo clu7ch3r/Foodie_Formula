@@ -82,7 +82,7 @@
             <TableView fx:id="shoppingListTable" prefHeight="500.0" prefWidth="299.0">
               <columns>
                 <TableColumn fx:id="shopIngredTabCol" minWidth="0.0" prefWidth="101.5999755859375" text="Ingredient" />
-                <TableColumn fx:id="shopAmountTabCol" minWidth="0.0" prefWidth="95.20001220703125" text="Amount" />
+                <TableColumn fx:id="shopAmountTabCol" minWidth="0.0" prefWidth="95.20001220703125" text="Total" />
                   <TableColumn fx:id="shopWeightTabCol" prefWidth="92.800048828125" text="Weight Type" />
               </columns>
                <padding>

@@ -95,7 +95,7 @@ public class GUIController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
+
 		shopIngredTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
 		shopAmountTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, Double>("weight"));
 		shopWeightTabCol.setCellValueFactory(new PropertyValueFactory<Ingredient, WeightType>("weightType"));
@@ -168,7 +168,7 @@ public class GUIController implements Initializable {
 		convertButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 			@Override
 			public void handle(Event arg0) {
-				
+
 				ObservableList<Ingredient> tmp = recipeTable.getItems();
 				if (tmp.isEmpty()) {
 
@@ -184,17 +184,33 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String searchString = searchField.getText();
-				boolean isSuccues = false;
-				int tmpCount = 0;
-				for (int i = 0; i < FileManager.recipeBox.size(); i++) {
-					Recipe tmp = FileManager.recipeBox.get(i);
-					String tmp2 = tmp.getName();
-					if (tmp2.contains(searchString)) {
-						isSuccues = true;
-						tmpCount++;
+				Recipe oneAndDone;
+				if (searchString.isEmpty()) {
+					searchField.setText("You can't search unless you enter something.");
+				} else {
+					boolean isSuccues = false;
+					int tmpCount = 0;
+					for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+						Recipe tmp = FileManager.recipeBox.get(i);
+						String tmp2 = tmp.getName();
+						if (tmp2.contains(searchString)) {
+							isSuccues = true;
+							tmpCount++;
+							if(tmpCount == 1) {
+								oneAndDone = tmp;
+							}
+						}
+					}
+					if (isSuccues) {
+						if(tmpCount > 1) {
+							
+						}else {
+							
+						}
+					} else {
+						searchField.setText("That name doesn't exist in your Recipe Box");
 					}
 				}
-
 			}
 		});
 
