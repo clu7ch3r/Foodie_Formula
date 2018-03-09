@@ -1,5 +1,6 @@
 package utilities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import enums.ItemType;
 import enums.VolumeType;
@@ -36,15 +37,17 @@ public class Converter {
 		weightToGrams.put(WeightType.GRAM, 1d);
 	}
 
-	public void convertVolumeToWeight(Ingredient ingredient) {
+	public static double convertVolumeToWeight(Ingredient ingredient) {
 
 		double totalweight = ingredient.getQuantity() * convertVolumeToWeight(ingredient.getVolumeType(),
 				ingredient.getItemType(), ingredient.getWeightType());
 
 		ingredient.setWeight(totalweight);
+
+		return totalweight;
 	}
 
-	public double convertVolumeToWeight(VolumeType vType, ItemType iType, WeightType wType) {
+	public static double convertVolumeToWeight(VolumeType vType, ItemType iType, WeightType wType) {
 
 		double vol = volToCup.get(vType);
 		double item = typeToGrams.get(iType);
@@ -52,5 +55,13 @@ public class Converter {
 		double totalweight = vol * item * weight;
 
 		return totalweight;
+	}
+
+	public static ArrayList<Ingredient> convertedIngredients(ArrayList<Ingredient> i) {
+		for (int x = 0; x < i.size(); x++) {
+			double w = convertVolumeToWeight(i.get(x));
+			i.get(x).setWeight(w);
+		}
+		return i;
 	}
 }
