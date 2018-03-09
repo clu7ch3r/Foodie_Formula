@@ -1,7 +1,7 @@
 package models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import javafx.collections.ObservableList;
 import models.Ingredient;
 
 public class Recipe implements Serializable {
@@ -9,14 +9,14 @@ public class Recipe implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Ingredient> ingredients = new ArrayList<>();
+	private ObservableList<Ingredient> ingredients;
 	private String name;
 	private String instructions;
 
-	public Recipe(String name, String instructions, ArrayList<models.Ingredient> ingredient) {
+	public Recipe(String name, String instructions, ObservableList<Ingredient> ingreds) {
 		this.name = name;
 		this.instructions = instructions;
-		this.ingredients = ingredient;
+		this.ingredients = ingreds;
 	}
 
 	public String getName() {
@@ -35,11 +35,11 @@ public class Recipe implements Serializable {
 		this.instructions = instructions;
 	}
 
-	public ArrayList<Ingredient> getIngredients() {
+	public ObservableList<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(ArrayList<Ingredient> ingredients) {
+	public void setIngredients(ObservableList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 

@@ -14,6 +14,8 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
@@ -23,7 +25,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import models.Ingredient;
 import models.Recipe;
 
@@ -145,21 +150,13 @@ public class GUIController implements Initializable {
 			@Override
 			public void handle(Event event) {
 				String name = recipeNameField.getText();
-
 				String instructions = recipeInstructionsField.getText();
-
-				@SuppressWarnings("unchecked")
-				ArrayList<Ingredient> ingreds = (ArrayList<Ingredient>) recipeTable.getItems();
-
-				if (name.isEmpty() || instructions.isEmpty() || ingreds.isEmpty()) {
-
+				ObservableList<Ingredient> ingreds = recipeTable.getItems();
+				if (name.trim().isEmpty() || instructions.trim().isEmpty() || ingreds.isEmpty()) {
+					
 				} else {
 					Recipe tmp = new Recipe(name, instructions, ingreds);
 					FileManager.recipeBox.add(tmp);
-					recipeTable.getItems().clear();
-					recipeNameField.setText("");
-					recipeInstructionsField.setText("");
-
 				}
 			}
 		});
@@ -184,7 +181,7 @@ public class GUIController implements Initializable {
 			public void handle(Event event) {
 				String searchString = searchField.getText();
 				@SuppressWarnings("unused")
-				Recipe oneAndDone;
+				Recipe oneAndDone = null;
 				if (searchString.isEmpty()) {
 					searchField.setText("You can't search unless you enter something.");
 				} else {
@@ -196,16 +193,65 @@ public class GUIController implements Initializable {
 						if (tmp2.contains(searchString)) {
 							isSuccues = true;
 							tmpCount++;
-							if(tmpCount == 1) {
+							if (tmpCount == 1) {
 								oneAndDone = tmp;
 							}
 						}
 					}
 					if (isSuccues) {
-						if(tmpCount > 1) {
+						if (tmpCount > 1) {
+							Stage tmpStage = new Stage();
+							HBox searchBox = new HBox();
+							ComboBox<String> CBox = new ComboBox<String>();
+							CBox.setPromptText("Which Recipe did you mean?");
+							for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+								Recipe tmp3 = FileManager.recipeBox.get(i);
+								if(tmp3.getName().contains(searchString)) {
+									CBox.getItems().add(tmp3.getName());
+								}
+							}
+							Button tmpButton = new Button("Select");
+							tmpButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+								@Override
+								public void handle(Event arg0) {
+									String userSel = CBox.getValue();
+									Recipe chosen = null;
+									for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+										if(userSel.equals(FileManager.recipeBox.get(i))) {
+											chosen = FileManager.recipeBox.get(i);
+										}
+									}
+									recipeTable.getItems().clear();
+									recipeTable.getItems().addAll(chosen.getIngredients());
+									recipeNameField.setText(chosen.getName());
+									recipeInstructionsField.setText(chosen.getInstructions());
+									tmpStage.close();
+								}
+							});
+							searchBox.getChildren().addAll(CBox, tmpButton);
+							searchBox.setSpacing(10);
+							searchBox.setAlignment(Pos.CENTER);
 							
-						}else {
+							Scene searchScene = new Scene(searchBox,400,100);
+							searchScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 							
+							tmpStage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
+							tmpStage.setScene(searchScene);
+							tmpStage.setTitle("Which Recipe did you mean?");
+							tmpStage.setResizable(false);
+							tmpStage.show();
+							
+							
+							
+							
+							
+							
+						} else {
+							recipeTable.getItems().clear();
+							recipeTable.getItems().addAll(oneAndDone.getIngredients());
+							
+							recipeInstructionsField.setText(oneAndDone.getInstructions());
+							recipeNameField.setText(oneAndDone.getName());
 						}
 					} else {
 						searchField.setText("That name doesn't exist in your Recipe Box");

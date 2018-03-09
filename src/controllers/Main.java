@@ -14,7 +14,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			FileManager.loadFile();
+		
 			GridPane root = FXMLLoader.load(getClass().getResource("FXML-FFormula.fxml"));
 			
 			Scene scene = new Scene(root,1000,650);
@@ -22,7 +22,7 @@ public class Main extends Application {
 			
 			stage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
 			stage.setOnCloseRequest(event -> {
-				FileManager.saveFile();
+				
 			});
 			stage.setScene(scene);
 			stage.setResizable(false);
