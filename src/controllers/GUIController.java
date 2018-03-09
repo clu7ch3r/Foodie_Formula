@@ -175,6 +175,10 @@ public class GUIController implements Initializable {
 				}
 			}
 		});
+		
+	}
+	
+}
 
 //		searchButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
 //			@Override
@@ -261,4 +265,4 @@ public class GUIController implements Initializable {
 //
 //	}
 
-}
+
