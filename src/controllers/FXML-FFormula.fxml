@@ -17,7 +17,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GUIController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -111,11 +110,6 @@
             <Insets left="5.0" right="5.0" />
          </padding>
       </VBox>
-      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
-         <children>
-            <TextField fx:id="searchField" prefHeight="25.0" prefWidth="231.0" />
-            <Button fx:id="searchButton" mnemonicParsing="false" text="Search" />
-         </children>
-      </HBox>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" />
    </children>
 </GridPane>

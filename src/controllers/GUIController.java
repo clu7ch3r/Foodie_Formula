@@ -91,11 +91,11 @@ public class GUIController implements Initializable {
 	@FXML
 	private Button convertButton;
 
-	@FXML
-	private TextField searchField;
-
-	@FXML
-	private Button searchButton;
+//	@FXML
+//	private TextField searchField;
+//
+//	@FXML
+//	private Button searchButton;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -176,90 +176,89 @@ public class GUIController implements Initializable {
 			}
 		});
 
-		searchButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
-			@Override
-			public void handle(Event event) {
-				String searchString = searchField.getText();
-				@SuppressWarnings("unused")
-				Recipe oneAndDone = null;
-				if (searchString.isEmpty()) {
-					searchField.setText("You can't search unless you enter something.");
-				} else {
-					boolean isSuccues = false;
-					int tmpCount = 0;
-					for (int i = 0; i < FileManager.recipeBox.size(); i++) {
-						Recipe tmp = FileManager.recipeBox.get(i);
-						String tmp2 = tmp.getName();
-						if (tmp2.contains(searchString)) {
-							isSuccues = true;
-							tmpCount++;
-							if (tmpCount == 1) {
-								oneAndDone = tmp;
-							}
-						}
-					}
-					if (isSuccues) {
-						if (tmpCount > 1) {
-							Stage tmpStage = new Stage();
-							HBox searchBox = new HBox();
-							ComboBox<String> CBox = new ComboBox<String>();
-							CBox.setPromptText("Which Recipe did you mean?");
-							for (int i = 0; i < FileManager.recipeBox.size(); i++) {
-								Recipe tmp3 = FileManager.recipeBox.get(i);
-								if(tmp3.getName().contains(searchString)) {
-									CBox.getItems().add(tmp3.getName());
-								}
-							}
-							Button tmpButton = new Button("Select");
-							tmpButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
-								@Override
-								public void handle(Event arg0) {
-									String userSel = CBox.getValue();
-									Recipe chosen = null;
-									for (int i = 0; i < FileManager.recipeBox.size(); i++) {
-										if(userSel.equals(FileManager.recipeBox.get(i))) {
-											chosen = FileManager.recipeBox.get(i);
-										}
-									}
-									recipeTable.getItems().clear();
-									recipeTable.getItems().addAll(chosen.getIngredients());
-									recipeNameField.setText(chosen.getName());
-									recipeInstructionsField.setText(chosen.getInstructions());
-									tmpStage.close();
-								}
-							});
-							searchBox.getChildren().addAll(CBox, tmpButton);
-							searchBox.setSpacing(10);
-							searchBox.setAlignment(Pos.CENTER);
-							
-							Scene searchScene = new Scene(searchBox,400,100);
-							searchScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-							
-							tmpStage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
-							tmpStage.setScene(searchScene);
-							tmpStage.setTitle("Which Recipe did you mean?");
-							tmpStage.setResizable(false);
-							tmpStage.show();
-							
-							
-							
-							
-							
-							
-						} else {
-							recipeTable.getItems().clear();
-							recipeTable.getItems().addAll(oneAndDone.getIngredients());
-							
-							recipeInstructionsField.setText(oneAndDone.getInstructions());
-							recipeNameField.setText(oneAndDone.getName());
-						}
-					} else {
-						searchField.setText("That name doesn't exist in your Recipe Box");
-					}
-				}
-			}
-		});
-
-	}
+//		searchButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+//			@Override
+//			public void handle(Event event) {
+//				String searchString = searchField.getText();
+//				Recipe oneAndDone = null;
+//				if (searchString.isEmpty()) {
+//					searchField.setText("You can't search unless you enter something.");
+//				} else {
+//					boolean isSuccues = false;
+//					int tmpCount = 0;
+//					for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+//						Recipe tmp = FileManager.recipeBox.get(i);
+//						String tmp2 = tmp.getName();
+//						if (tmp2.contains(searchString)) {
+//							isSuccues = true;
+//							tmpCount++;
+//							if (tmpCount == 1) {
+//								oneAndDone = tmp;
+//							}
+//						}
+//					}
+//					if (isSuccues) {
+//						if (tmpCount > 1) {
+//							Stage tmpStage = new Stage();
+//							HBox searchBox = new HBox();
+//							ComboBox<String> CBox = new ComboBox<String>();
+//							CBox.setPromptText("Which Recipe did you mean?");
+//							for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+//								Recipe tmp3 = FileManager.recipeBox.get(i);
+//								if(tmp3.getName().contains(searchString)) {
+//									CBox.getItems().add(tmp3.getName());
+//								}
+//							}
+//							Button tmpButton = new Button("Select");
+//							tmpButton.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<Event>() {
+//								@Override
+//								public void handle(Event arg0) {
+//									String userSel = CBox.getValue();
+//									Recipe chosen = new Recipe(userSel, userSel, null);
+//									for (int i = 0; i < FileManager.recipeBox.size(); i++) {
+//										if(userSel.equals(FileManager.recipeBox.get(i))) {
+//											chosen = FileManager.recipeBox.get(i);
+//										}
+//									}
+//									recipeTable.getItems().clear();
+//									recipeTable.getItems().addAll(chosen.getIngredients());
+//									recipeNameField.setText(chosen.getName());
+//									recipeInstructionsField.setText(chosen.getInstructions());
+//									tmpStage.close();
+//								}
+//							});
+//							searchBox.getChildren().addAll(CBox, tmpButton);
+//							searchBox.setSpacing(10);
+//							searchBox.setAlignment(Pos.CENTER);
+//							
+//							Scene searchScene = new Scene(searchBox,400,100);
+//							searchScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//							
+//							tmpStage.getIcons().add(new Image("file:FoodiesFormulaplatter.jpg"));
+//							tmpStage.setScene(searchScene);
+//							tmpStage.setTitle("Which Recipe did you mean?");
+//							tmpStage.setResizable(false);
+//							tmpStage.show();
+//							
+//							
+//							
+//							
+//							
+//							
+//						} else {
+//							recipeTable.getItems().clear();
+//							recipeTable.getItems().addAll(oneAndDone.getIngredients());
+//							
+//							recipeInstructionsField.setText(oneAndDone.getInstructions());
+//							recipeNameField.setText(oneAndDone.getName());
+//						}
+//					} else {
+//						searchField.setText("That name doesn't exist in your Recipe Box");
+//					}
+//				}
+//			}
+//		});
+//
+//	}
 
 }
