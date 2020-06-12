@@ -1,8 +1,5 @@
 # Foodie_Formula
 
-
-**There's Whole in both VolumeType and ItemType and it's breaking the conversion.**
-
 Main -> Application runner.<br>
 ItemType -> Enums of ingredient types.<br>
 VolumeType -> Enums of volume types.<br>
